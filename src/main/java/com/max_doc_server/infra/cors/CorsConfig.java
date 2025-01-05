@@ -1,4 +1,4 @@
-package com.template_server.infra.cors;
+package com.maxdoc_server.infra.cors;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

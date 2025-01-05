@@ -1,6 +1,6 @@
-package com.template_server.product.repository;
+package com.max_doc_server.product.repository;
 
-import com.template_server.product.domain.Product;
+import com.max_doc_server.product.domain.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ProductRepository extends JpaRepository<Product, String> {

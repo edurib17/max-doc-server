@@ -1,13 +1,13 @@
-package com.template_server;
+package com.maxdoc_server;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TemplateServerApplication {
+public class MaxDocServerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TemplateServerApplication.class, args);
+		SpringApplication.run(MaxDocServerApplication.class, args);
 	}
 
 }

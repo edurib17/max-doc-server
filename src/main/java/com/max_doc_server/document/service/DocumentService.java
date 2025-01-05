@@ -1,8 +1,8 @@
-package com.template_server.product.service;
+package com.max_doc_server.product.service;
 
-import com.template_server.product.domain.Product;
-import com.template_server.product.dto.RequestProductDTO;
-import com.template_server.product.repository.ProductRepository;
+import com.max_doc_server.product.domain.Product;
+import com.max_doc_server.product.dto.RequestProductDTO;
+import com.max_doc_server.product.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

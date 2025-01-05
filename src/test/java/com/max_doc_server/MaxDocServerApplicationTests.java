@@ -1,10 +1,10 @@
-package com.template_server;
+package com.maxdoc_server;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TemplateServerApplicationTests {
+class MaxDocServerApplicationTests {
 
 	@Test
 	void contextLoads() {

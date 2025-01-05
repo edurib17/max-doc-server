@@ -1,8 +1,8 @@
-package com.template_server.product.controller;
+package com.max_doc_server.product.controller;
 
-import com.template_server.product.domain.Product;
-import com.template_server.product.dto.RequestProductDTO;
-import com.template_server.product.service.ProductService;
+import com.max_doc_server.product.domain.Product;
+import com.max_doc_server.product.dto.RequestProductDTO;
+import com.max_doc_server.product.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
