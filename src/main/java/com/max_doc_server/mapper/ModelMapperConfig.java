@@ -1,4 +1,4 @@
-package com.maxdoc_server.mapper;
+package com.max_doc_server.mapper;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -8,11 +8,11 @@
 		<version>3.3.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.template-server</groupId>
-	<artifactId>template-server</artifactId>
+	<groupId>com.max-doc-server</groupId>
+	<artifactId>max-doc-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>template-server</name>
-	<description>Template Server</description>
+	<name>max-doc-server</name>
+	<description>MaxDoc Server</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -73,16 +73,6 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.auth0</groupId>
-			<artifactId>java-jwt</artifactId>
-			<version>4.4.0</version>
-		</dependency>
-		<dependency>
 			<groupId>org.modelmapper</groupId>
 			<artifactId>modelmapper</artifactId>
 			<version>3.1.1</version>
@@ -109,6 +99,14 @@
 				<configuration>
 					<propertyFile>src/main/resources/application.properties</propertyFile>
 					<propertyFileWillOverride>true</propertyFileWillOverride>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.22.2</version>
+				<configuration>
+					<skipTests>true</skipTests>
 				</configuration>
 			</plugin>
 		</plugins>

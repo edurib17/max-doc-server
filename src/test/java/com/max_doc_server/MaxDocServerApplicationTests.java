@@ -1,4 +1,4 @@
-package com.maxdoc_server;
+package com.max_doc_server;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

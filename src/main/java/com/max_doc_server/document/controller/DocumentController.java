@@ -1,48 +1,72 @@
-package com.max_doc_server.product.controller;
-
-import com.max_doc_server.product.domain.Product;
-import com.max_doc_server.product.dto.RequestProductDTO;
-import com.max_doc_server.product.service.ProductService;
+package com.max_doc_server.document.controller;
+import com.max_doc_server.document.domain.Document;
+import com.max_doc_server.document.enums.PhaseEnum;
+import com.max_doc_server.document.record.RequestCreateNewDocumentRecord;
+import com.max_doc_server.document.record.RequestUpdateDocumentRecord;
+import com.max_doc_server.document.service.DocumentService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Objects;
 
 @RestController
-@RequestMapping("/v1/products")
+@RequestMapping("/api/v1/documents")
 @RequiredArgsConstructor
-public class ProductController {
-    private final ProductService service;
-
-    @GetMapping("/{id}")
-    public ResponseEntity getOne(@PathVariable String id){
-        Product responseDTO = service.getOne(id);
-        if(Objects.nonNull(responseDTO)){
-            return ResponseEntity.ok(responseDTO);
-        }
-        return ResponseEntity.badRequest().build();
-    }
+public class DocumentController {
+    private final DocumentService service;
 
     @PostMapping()
-    public ResponseEntity save(@RequestBody RequestProductDTO body){
-        Product responseDTO = service.save(body);
-        if(Objects.nonNull(responseDTO)){
-            return ResponseEntity.ok(responseDTO);
+    public ResponseEntity<?> save(@RequestBody RequestCreateNewDocumentRecord body) {
+        ResponseEntity<?> response = service.createNewDocument(body);
+        if (Objects.nonNull(response)) {
+            return response;
         }
         return ResponseEntity.badRequest().build();
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteById(@PathVariable String id){
-        service.deleteById(id);
+    @PutMapping("/{id}")
+    public ResponseEntity<?> update(@PathVariable String id, @RequestBody RequestUpdateDocumentRecord body) {
+        ResponseEntity<?> response = service.updateDocument(id, body);
+        if (Objects.nonNull(response)) {
+            return response;
+        }
+        return ResponseEntity.badRequest().build();
     }
 
-    @GetMapping()
-    public List<Product> getAll(){
-        return service.getAll();
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getById(@PathVariable String id) {
+        ResponseEntity<?> response = service.getOne(id);
+        if (Objects.nonNull(response)) {
+            return response;
+        }
+        return ResponseEntity.badRequest().build();
     }
 
+    @PutMapping("/{id}/phase/{newPhase}")
+    public ResponseEntity<?> update(@PathVariable String id, @PathVariable PhaseEnum newPhase) {
+        ResponseEntity<?> response = service.updateDocumentPhase(id, newPhase);
+        if (Objects.nonNull(response)) {
+            return response;
+        }
+        return ResponseEntity.badRequest().build();
+    }
+
+    @PutMapping("/{id}/clone-document")
+    public ResponseEntity<?> cloneNewDocumentById(@PathVariable String id) {
+        ResponseEntity<?> response = service.cloneDocument(id);
+        if (Objects.nonNull(response)) {
+            return response;
+        }
+        return ResponseEntity.badRequest().build();
+    }
+
+    @GetMapping("/list")
+    public Page<Document> getDocuments(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        return service.getDocumentsPaged(page, size);
+    }
 }
 

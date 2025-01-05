@@ -8,7 +8,7 @@ services:
     environment:
       - MYSQL_USER=admin
       - MYSQL_PASSWORD=admin
-      - MYSQL_DATABASE=db_template
+      - MYSQL_DATABASE=db_max_doc
       - MYSQL_ROOT_PASSWORD=root
     volumes:
       - "./conf.d:/etc/mysql/conf.d:ro"
