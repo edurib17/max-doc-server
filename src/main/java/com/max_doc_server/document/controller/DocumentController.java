@@ -1,5 +1,6 @@
 package com.max_doc_server.document.controller;
 import com.max_doc_server.document.domain.Document;
+import com.max_doc_server.document.dto.DocumentDTO;
 import com.max_doc_server.document.enums.PhaseEnum;
 import com.max_doc_server.document.record.RequestCreateNewDocumentRecord;
 import com.max_doc_server.document.record.RequestUpdateDocumentRecord;

@@ -125,7 +125,6 @@ public class DocumentService {
         }
 
         Document updatedDocument = repository.save(documentToCreate);
-
         return ResponseEntity.status(HttpStatus.OK)
                 .body(updatedDocument);
     }
