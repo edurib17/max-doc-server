@@ -135,7 +135,7 @@ public class DocumentService {
         return repository.findAll(pageable);
     }
 
-    private boolean checkIfAcronymAndVersionExist(String acronym, int version) {
+    public boolean checkIfAcronymAndVersionExist(String acronym, int version) {
         return repository.existsByAcronymAndVersion(acronym, version);
     }
 
