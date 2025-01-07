@@ -2,6 +2,8 @@ package com.max_doc_server.document.repository;
 
 import com.max_doc_server.document.domain.Document;
 import com.max_doc_server.document.enums.PhaseEnum;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -17,6 +19,10 @@ public interface DocumentRepository extends JpaRepository<Document, String> {
     @Modifying
     @Query("UPDATE Document d SET d.phase = :phase WHERE d.acronym = :acronym AND d.id != :id")
     void updateOthersDocuments(@Param("id") String id, @Param("acronym") String acronym, @Param("phase") PhaseEnum phase);
+
+    @Query("SELECT d FROM Document d WHERE d.phase = :phase")
+    Page<Document> findByPhase(@Param("phase") PhaseEnum phase, Pageable pageable);
+
 
 
 }

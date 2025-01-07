@@ -17,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Objects;
 import java.util.Optional;
 
 
@@ -130,8 +131,11 @@ public class DocumentService {
     }
 
 
-    public Page<Document> getDocumentsPaged(int page, int size) {
+    public Page<Document> getDocumentsPaged(int page, int size, PhaseEnum phase) {
         Pageable pageable = PageRequest.of(page, size);
+        if(Objects.nonNull(phase) && !phase.toString().trim().isEmpty()){
+            return repository.findByPhase(phase,pageable);
+        }
         return repository.findAll(pageable);
     }
 

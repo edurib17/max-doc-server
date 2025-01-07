@@ -74,8 +74,10 @@ public class DocumentController {
     @GetMapping("/list")
     public Page<Document> getDocuments(
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size) {
-        return service.getDocumentsPaged(page, size);
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(required = false) PhaseEnum phase
+            ) {
+        return service.getDocumentsPaged(page, size, phase);
     }
 }
 
