@@ -72,12 +72,14 @@ public class DocumentController {
 
     @Operation(summary = "Listar documentos paginados", description = "Retorna uma lista de documentos com paginação.")
     @GetMapping("/list")
-    public Page<Document> getDocuments(
+    public Page<DocumentDTO> getDocuments(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
-            @RequestParam(required = false) PhaseEnum phase
-            ) {
-        return service.getDocumentsPaged(page, size, phase);
+            @RequestParam(required = false) PhaseEnum phase,
+            @RequestParam(required = false) String title,
+            @RequestParam(required = false) String acronym
+    ) {
+        return service.getDocumentsPaged(page, size, phase, title, acronym);
     }
 }
 

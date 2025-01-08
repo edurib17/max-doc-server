@@ -1,6 +1,8 @@
 package com.max_doc_server.document.service;
 
 import com.max_doc_server.document.domain.Document;
+import com.max_doc_server.document.dto.DocumentDTO;
+import com.max_doc_server.document.dto.DocumentFilterDTO;
 import com.max_doc_server.document.enums.PhaseEnum;
 import com.max_doc_server.document.record.RequestCreateNewDocumentRecord;
 import com.max_doc_server.document.record.RequestUpdateDocumentRecord;
@@ -16,6 +18,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Objects;
 import java.util.Optional;
@@ -131,12 +134,9 @@ public class DocumentService {
     }
 
 
-    public Page<Document> getDocumentsPaged(int page, int size, PhaseEnum phase) {
+    public Page<DocumentDTO> getDocumentsPaged(int page, int size, PhaseEnum phase, String title, String acronym) {
         Pageable pageable = PageRequest.of(page, size);
-        if(Objects.nonNull(phase) && !phase.toString().trim().isEmpty()){
-            return repository.findByPhase(phase,pageable);
-        }
-        return repository.findAll(pageable);
+        return repository.documentsFilterPaged(new DocumentFilterDTO(title, acronym, phase), pageable);
     }
 
     public boolean checkIfAcronymAndVersionExist(String acronym, int version) {
